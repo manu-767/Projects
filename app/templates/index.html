@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinCare • Medical Skin Disease Checker</title>
+    <!-- bootstrap cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+      <!-- Chatbot button -->
+  <button class="chatbot-button" onclick="toggleChat()">
+    <img src="{{ url_for('static', filename='images/skin_bot.png') }}" alt="Chatbot Icon">
+  </button>
+
+  <!-- Chat popup -->
+  <div id="chatPopup" class="chat-popup">
+    <div class="chat-header">SkinBot 🤖 <button class="close-chat" onclick="toggleChat()">✖</button></div>
+    <div id="chatBody" class="chat-body">
+        <p>Hello! How can I help you?</p>
+    </div>
+    <div class="chat-input">
+      <input id="userInput" type="text" placeholder="Ask me something...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+      <!-- header section starts -->
+
+<header class="fixed-top py-3">
+
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <a href="#" class="logo">Skin Care<span class="fas fa-hospital-user"></span></a>
+
+        <div id="menu-bar" class="fas fa-bars d-inline-block d-md-none"></div>
+
+        <nav class="nav" role="navigation" aria-label="Primary">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#prevent">Skin disease</a>
+            <a href="#check">Check Skin Disease </a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- header section end-->
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="container">
+        
+
+        <div class="row min-vh-100 align-items-center pt-5">
+
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/homepage.png') }}" class="w-100" alt="">
+            </div>
+
+            <div class="col-md-6 content text-center text-md-start pl-md-5">
+                <span>Prevent Diseases Before They Spread</span>
+                <h2><strong>Get instant insights and protect your skin with smart detection technology.</strong></h2>
+                <a href="https://medlineplus.gov/skinconditions.html" class="link-btn" target="_blank" rel="noopener">learn more</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+<!-- home section starts  -->
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="row align-items-center flex-wrap-reverse">
+
+            <div class="col-md-6 content">
+                <h3>What are Skin Diseases?</h3>
+                <p>Skin diseases are conditions that affect your skin. These diseases may cause rashes, inflammation, itchiness or other skin changes. Some skin conditions may be genetic, while lifestyle factors may cause others. Skin disease treatment may include medications, creams or ointments, or lifestyle changes.</p>
+                <a href="https://www.niams.nih.gov/health-topics/skin-diseases." class="link-btn">learn more</a>
+            </div>
+
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/skin-allergy-person-s-arm.jpg') }} " class="w-100" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- about section ends -->
+<!-- prevent section starts  -->
+
+<section class="prevent" id="prevent">
+
+    <h1 class="heading"> <span>Skin Diseases</span> </h1>
+
+    <div class="container">
+
+        <div class="d-flex flex-wrap justify-content-center">
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/dry.png') }}" alt="Eczema icon">
+                <h3>Eczema (Atopic Dermatitis)</h3>
+                <p>Chronic itchy, inflamed skin with dry patches; often in flexures. Emollients and trigger avoidance are key.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/Normal.png') }}" alt="Psoriasis icon">
+                <h3>Psoriasis</h3>
+                <p>Immune‑mediated plaques with silvery scale on extensor surfaces and scalp; may involve nails and joints.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/oily.png') }}" alt="Rosacea icon">
+                <h3>Rosacea</h3>
+                <p>Facial flushing, persistent erythema, papules/pustules; triggered by heat, alcohol, spicy foods, or sun.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/acne.png') }}" alt="Impetigo icon">
+                <h3>Impetigo</h3>
+                <p>Contagious bacterial infection with honey‑colored crusts, commonly in children; treat with topical antibiotics.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/Sensitive.png') }}" alt="Cellulitis icon">
+                <h3>Cellulitis</h3>
+                <p>Acute bacterial skin infection with warmth, tenderness, and swelling; requires prompt systemic antibiotics.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/Normal.png') }}" alt="Ringworm icon">
+                <h3>Tinea (Ringworm)</h3>
+                <p>Annular plaques with raised scaly border due to dermatophyte infection; treat with topical antifungals.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/acne.png') }}" alt="Hives icon">
+                <h3>Urticaria (Hives)</h3>
+                <p>Transient pruritic wheals that migrate within 24 hours; antihistamines are first‑line therapy.</p>
+            </div>
+
+            <div class="box p-4 m-2">
+                <img src="{{ url_for('static', filename='images/oily.png') }}" alt="Seborrheic Dermatitis icon">
+                <h3>Seborrheic Dermatitis</h3>
+                <p>Greasy scale on scalp, brows, and nasolabial folds; related to Malassezia; responds to antifungal shampoos.</p>
+            </div>
+
+           
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- prevent section ends -->
+
+<!-- check -->
+ <!-- <section id="check">
+  {% if res %}
+    <h3>Predicted Disease: {{ res }}</h3>
+
+    {% if confidence %}
+      <p><strong>Confidence Score:</strong> {{ confidence }}%</p>
+    {% endif %}
+
+    {% if risk %}
+      <p style="color: red; font-weight: bold;">
+        ⚠️ This is a high-risk condition. Please consult a dermatologist.
+      </p>
+    {% endif %}
+  {% endif %}
+</section> -->
+
+<section class="check" id="check" aria-labelledby="check-heading">
+  <h1 id="check-heading" class="heading"> <span>Check your skin condition</span> </h1>
+
+  <form id="upload-form" action="{{ url_for('home_page') }}" method="POST" enctype="multipart/form-data" novalidate>
+    <!-- Hidden actual file input -->
+    <input type="file" id="real-file" name="file" hidden="hidden" onchange="previewImage(event)" accept="image/png, image/jpeg, image/webp" aria-describedby="upload-help" />
+
+    <!-- Custom styled button that triggers file input -->
+    <center><button type="button" id="custom-button">Choose A File</button></center> 
+    <br>
+
+    <div id="upload-help" class="text-muted" style="text-align:center; font-size: 0.95rem;">
+      Upload a clear, well‑lit image (PNG, JPG, JPEG, or WEBP). Avoid blurry or obstructed areas.
+    </div>
+
+    <!-- Image preview element -->
+    <center>
+      {% if uploaded_image %}
+        <img id="imagePreview" src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Image Preview" style="max-width: 300px; border: 1px solid #ccc; margin-top: 10px;">
+      {% else %}
+        <img id="imagePreview" src="#" alt="Image Preview" style="display: none; max-width: 300px; border: 1px solid #ccc; margin-top: 10px;">
+      {% endif %}
+    </center>
+
+    <br><br>
+    <center>
+      <button type="submit" id="submit-button" class="btn" aria-live="polite">Analyze</button>
+      <div id="inferenceSpinner" class="visually-hidden" aria-hidden="true" style="margin-top:10px; color:#555;">
+        Analyzing image…
+      </div>
+    </center>
+  </form>
+  <br><br>
+
+  {% if res %}
+    <div class="result-card">
+      <h4 class="result-title">Your Result</h4>
+      <div class="result-header">
+        <div class="result-name">{{ res }}</div>
+        {% if dermatologist_note %}
+          <span class="badge badge-high" aria-label="High risk">High risk</span>
+        {% else %}
+          <span class="badge badge-info" aria-label="Preliminary">Preliminary</span>
+        {% endif %}
+      </div>
+
+      {% if confidence %}
+        <div class="confidence-block">
+          <div class="confidence-row">
+            <span>Confidence</span>
+            <span>{{ '%.2f'|format(confidence * 100) }}%</span>
+          </div>
+          <div class="progress" role="progressbar" aria-valuenow="{{ (confidence * 100)|round(0, 'floor') }}" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar {% if confidence >= 0.8 %}high{% elif confidence >= 0.5 %}medium{% else %}low{% endif %}"
+                 data-progress="{{ (confidence * 100)|round(0, 'floor') }}"></div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if dermatologist_note %}
+        <p class="derm-note">{{ dermatologist_note }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+
+
+
+
+<section class="contact" id="contact">
+
+    <h1 class="heading"> <span>Contact Us</span></h1>
+    
+        <div class="container">
+    
+            <div class="row flex-wrap-reverse">
+    
+                <div class="col-md-7 p-2">
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" class="box" required />
+                    <input type="email" name="from_email" placeholder="Your Email" class="box" required />
+                    <input type="tel" name="from_phone" placeholder="Your Phone Number" class="box" />
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <input type="hidden" name="time" />
+                    <input type="submit" class="link-btn" value="Send Message" />
+                </form>
+
+
+
+                </div>
+    
+                <div class="col-md-5 p-2">
+                    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.239631809319!2d77.57198107512254!3d12.9565122873575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15c0eb3762d5%3A0x290275007ab94afa!2sKIMS%20Hospital%20%26%20Research%20Centre!5e0!3m2!1sen!2sin!4v1752764299740!5m2!1sen!2sin"allowfullscreen="" loading="lazy"></iframe>
+                    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+    
+    <!-- contact section ends -->
+    
+  
+    
+    <!-- footer section starts  -->
+    
+    <section class="footer">
+    
+        <div class="container">
+    
+            <div class="d-flex flex-wrap justify-content-center text-center text-sm-start">
+    
+                <div class="box p-3 m-2">
+                    <h3>Skin Care</h3>
+                    <p> Kempegowda Institute Of Medical Science(KIMS), Krishna Rajendra Rd, Parvathipuram, Vishweshwarapura, Shankarapura, Bengaluru, Karnataka 560002</p>
+                </div>
+    
+                <div class="box p-3 m-2">
+                    <h3>quick links</h3>
+                    <a href="#">home</a>
+                    <!-- <a href="#">about</a>
+                    <a href="#">skin disease</a>
+                    <a href="#">check my skin type</a>
+                    <a href="#">our team</a>
+                    <a href="#">contact us</a> -->
+                    
+                </div>
+    
+                <div class="box p-3 m-2">
+                    <h3>Connect with us</h3>
+                    <a href="#">facebook</a>
+                    <a href="#">instagram</a>
+                    <a href="#">linkedin</a>
+                    <a href="#">twitter</a>
+                </div>
+    
+                <div class="box p-3 m-2">
+                    <h3>contact info</h3>
+                    <a href="#">080 2671 5790</a>
+                    <a href="#">+91 7676440422</a>
+                    <a href="#">1bi23mc072@bit-bangalore.edu.in</a>
+                    <a href="#">Bangalore, india -560002</a>
+                </div>
+    
+            </div>
+    
+            <div class="credit"> created by <span> Manohar</span> | all rights reserved </div>
+    
+        </div>
+    
+    </section>
+    
+    <!-- footer section ends -->
+    
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  (function () {
+    emailjs.init('FG1mWniKBIi5a2y9z'); // ✅ Replace this with your actual public key
+  })();
+</script>
+
+
+
+
+<!-- js file link  -->
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+
+
+{% if scroll_to %}
+  <script>
+  window.onload = function() {
+    
+      location.hash = '#{{ scroll_to }}';
+   
+  };
+</script>
+
+{% endif %}
+
+
+
+
+</body>
+</html>
